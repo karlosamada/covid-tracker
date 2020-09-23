@@ -1,5 +1,5 @@
 import React from 'react';
-import {Field, reduxForm} from 'redux-form';
+import {reduxForm} from 'redux-form';
 
 class Checkbox extends React.Component {
     checkboxGroup() {

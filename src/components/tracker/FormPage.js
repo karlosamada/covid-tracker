@@ -4,6 +4,7 @@ import PageTwoForm from './PageTwoForm';
 import PageThreeForm from './PageThreeForm';
 import PageFourForm from './PageFourForm';
 import PropTypes from 'prop-types';
+import FacebookLogin from 'react-facebook-login';
 
 class FormPage extends React.Component {
     constructor(props) {
