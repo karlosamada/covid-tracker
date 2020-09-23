@@ -1,29 +1,45 @@
 import React from 'react';
 import {Field, reduxForm} from 'redux-form';
 
-const Checkbox = ({choices, label, type}) => {
-    
-    return (
-        <div>
-            <p>{label}</p>
-            {choices.map(choice => {
-                return (
-                    <div key={choice}>
-                        <p>
-                            <label>
-                            <Field
-                                name={choice}
-                                component="input"
+class Checkbox extends React.Component {
+    checkboxGroup() {
+        let {choices, input } = this.props;
+
+        return choices.map((choice, index) => {
+            return (
+                <div className="checkbox" key={index}>
+                    <p>
+                        <label>
+                            <input 
                                 type="checkbox"
-                            />
-                                <span>{choice}</span>
-                            </label>
-                        </p>
-                    </div>
-                );
-            })}
-        </div>
-    )
+                                name={`${input.name}[${index}]`}
+                                checked={input.value.indexOf(choice.name) !== -1}
+                                onChange={(event) => {
+                                    const newValue = [...input.value];
+                                    if (event.target.checked) {
+                                        newValue.push(choice.name)
+                                    } else {
+                                        newValue.splice(newValue.indexOf(choice.name), 1);
+                                    }
+
+                                    return input.onChange(newValue);
+                                }} />
+
+                                <span>{choice.name}</span>
+                        </label>
+                    </p>
+                </div>
+            )
+        });
+    }
+
+    render() {
+        return (
+            <div>
+                {this.checkboxGroup()}
+            </div>
+        )
+    }
 }
 
 export default reduxForm({

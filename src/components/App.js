@@ -1,5 +1,6 @@
 import React from 'react';
 import {Router, Route} from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import HomePage from './tracker/HomePage';
 import FormPage from './tracker/FormPage';
